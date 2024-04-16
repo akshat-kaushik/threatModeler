@@ -1,0 +1,6 @@
+{
+ "host": "127.0.0.1",
+ "port": 80,
+ "email": "admin@admin.com",
+ "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSJ9.ipqCVX-_vApyJ2t2UNfaibgzN3t-Ys2H8JFFcpfTcjs"
+}

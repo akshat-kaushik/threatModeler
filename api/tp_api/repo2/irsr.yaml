@@ -1,0 +1,24 @@
+name: Improper resource shutdown or release
+cwe: 404
+description: Specially crafted Profinet packets sent to the affected device might cause the device to go into defect mode, effectively causing a DoS. A cold restart is required to recover the system.
+mitigations:
+- description: Implement robust input validation mechanisms to ensure that only valid and expected Profinet packets are processed by the device. 
+      Validate packet structure, length, and content to detect and reject malformed or malicious packets.
+  phase: Implementation
+- description:  Implement rate limiting measures to control the rate of incoming Profinet packets and detect anomalous traffic patterns indicative of DoS attacks. 
+      Deploy traffic monitoring tools to analyze network traffic and detect suspicious or unauthorized packet activities.
+  phase: Implementation
+risk:
+- consequence: Manipulation of Profinet packet processing, potentially resulting in unintended device behavior and loss of operational control.
+  type: Integrity
+- consequence: Disruption of device availability and critical operations due to defect mode triggered by malicious Profinet packets.
+  type: Availability
+
+test-cases: 
+- name: automated-vulnerability-scanning
+  test: Run automated vulnerability discovery tools to identify improper resource shutdown or release vulnerabilities in the affected device.
+  tools: [nmap,nessus,openvas]
+  type: discovery
+- name: manual
+  test: Test for improper resource shutdown or release vulnerabilities manually, as part of a penetration test or bug bounty program.
+  type: manual

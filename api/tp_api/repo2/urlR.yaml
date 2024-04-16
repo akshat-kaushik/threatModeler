@@ -1,0 +1,25 @@
+name: URL Redirection to Untrusted Site
+cwe: 601
+description: The integrated web server (Port 80/TCP and Port 443/TCP) of the affected device might allow attackers to redirect users to untrusted web sites.
+mitigations:
+- description: Restrict URL redirection to a predefined whitelist of trusted domains or URLs. Validate and sanitize user-provided redirect URLs to ensure they are within the allowed whitelist.
+  phase: Implementation
+- description: Educate users and administrators about the risks of URL redirection attacks and best practices for identifying and avoiding suspicious URLs.
+  phase: Human Factors
+
+risk:
+- consequence: Unauthorized redirection of users to malicious or phishing web sites, potentially leading to theft of sensitive information or installation of malware.
+  type: Confidentiality
+- consequence: Loss of user trust and reputation damage due to redirection to untrusted or malicious web sites.
+  type: Reputation
+
+test-cases:
+- name: Whitelisting Validation Test
+  test: Attempt to redirect to both trusted and untrusted URLs to validate the effectiveness of the whitelisting mechanism.
+  tools: [Manual Testing]
+  type: Penetration Testing
+- name: Input Validation Test
+  test: Inject malicious URLs and payloads to test the input validation and sanitization mechanisms for URL redirection.
+  tools: [Burp Suite]
+  type: Web Application Security Scanner
+

@@ -1,0 +1,80 @@
+objectType: Feature
+name: hmi
+description: In most SCADA/ICS installations, there is a dedicated system for managing and monitoring the industrial system. Most people in the industry refer to this as the human machine interface or HMI. This system is crucial to the management the industrial system but also can be a critical vector for attackers. If the attacker can compromise the HMI, they own your industrial network!
+
+abuse_cases:
+  - name: change program state
+    description: As an attacker, I would like to change the state of the program to cause a malfunction in the industrial system.
+    threat_scenarios:
+      - name: change program state
+        type: inline
+        description: The attacker will attempt to change the state of the program to cause a malfunction in the industrial system.
+        vul_name: Change Program State
+        severity: 3
+        cwe: 434
+        test-cases:
+          - name: manual-pentesting
+            test: Attempt to change the state of the program to cause a malfunction in the industrial system.
+            type: exploit
+            tools: manual
+      - name: leverage vulnerable component
+        type: inline
+        description: Leverage Vulnerable Component in target environment and compromise the service to create a DoS scenario
+        vul_name: Exploit Vulnerable Third Party Component
+        severity: 2
+        cwe: 16
+        test-cases:
+          - name: automated-testing
+            test: run vulnerability scanning tools to identify exploitable software in the target environment
+            type: discovery
+            tools: nessus
+  - name: send unauthorised command messages
+    description: As an attacker, I would like to send unauthorised command messages to the industrial system to cause a malfunction.
+    threat_scenarios:
+      - name: send unauthorised command messages
+        type: inline
+        description: The attacker will attempt to send unauthorised command messages to the industrial system to cause a malfunction.
+        vul_name: Send Unauthorised Command Messages
+        severity: 3
+        cwe: 434
+        test-cases:
+          - name: manual-pentesting
+            test: Attempt to send unauthorised command messages to the industrial system to cause a malfunction.
+            type: exploit
+            tools: manual
+      - name: leverage vulnerable component
+        type: inline
+        description: Leverage Vulnerable Component in target environment and compromise the service to create a DoS scenario
+        vul_name: Exploit Vulnerable Third Party Component
+        severity: 2
+        cwe: 16
+        test-cases:
+          - name: automated-testing
+            test: run vulnerability scanning tools to identify exploitable software in the target environment
+            type: discovery
+            tools: nessus
+  - name: denial of service attack
+    description: As an attacker, I would like to perform a denial of service attack on the HMI to disrupt the industrial system.
+    threat_scenarios:
+      - name: denial of service attack
+        type: inline
+        description: The attacker will attempt to perform a denial of service attack on the HMI to disrupt the industrial system.
+        vul_name: Denial of Service Attack
+        severity: 3
+        cwe: 434
+        test-cases:
+          - name: manual-pentesting
+            test: Attempt to perform a denial of service attack on the HMI to disrupt the industrial system.
+            type: exploit
+            tools: manual
+      - name: leverage vulnerable component
+        type: inline
+        description: Leverage Vulnerable Component in target environment and compromise the service to create a DoS scenario
+        vul_name: Exploit Vulnerable Third Party Component
+        severity: 2
+        cwe: 16
+        test-cases:
+          - name: automated-testing
+            test: run vulnerability scanning tools to identify exploitable software in the target environment
+            type: discovery
+            tools: nessus

@@ -1,0 +1,50 @@
+objectType: Feature
+name: create_profile
+description: As an User of the organization,
+     As an end-user, I would like to create Student profile and upload information to the User profile. This will have the User's PII
+abuse_cases:
+  - name: steal Student sensitive files
+    description: As a malicious user, I would like to steal Student PII from the uploaded files for me to be able to monetize this information
+    threat_scenarios:
+    - name: file upload attacks
+      type: repo
+      description: Upload file with malware that gives you backend access to the Uploaded files, based on malicious file execution
+      reference: {name: insecure_deserialization, severity: 3}
+
+    - name: compromise amazon s3 bucket
+      type: repo
+      description: Attacker would enumerate for Public Bucket Access of Uploaded files and Generic Authenticated Access to AWS
+      reference: {name: aws_s3, severity: 2}
+    
+  - name: bring-down-the-system-malware
+    description: As a malicious user, I want to bring down the system by planting malware in the Mis
+    threat_scenarios:
+    - name: upload-malware
+      type: inline
+      description: I will upload malware as an profile photo to the system and compromise the application and create a DoS condition
+      vul_name: Malicious File Upload
+      severity: 3
+      cwe: 434
+      test-cases:
+      - name: manual-pentesting
+        test: upload files with reverse-shell and CSV injection payloads and attempt to trigger remote code execution on Mis Admin's Computer
+        type: exploit
+        tools: manual
+    - name: leverage vulnerable component
+      type: inline
+      description: Leverage Vulnerable Component in target environment and compromise the service to create a DoS scenario
+      vul_name: Exploit Vulnerable Third Party Component
+      severity: 2
+      cwe: 16
+      test-cases:
+      - name: automated-testing
+        test: run vulnerability scanning tools to identify exploitable software in the target environment
+        type: discovery
+        tools: nessus
+
+    
+
+internal_interactions:
+- upload_expense: "HTTP POST Request"
+- logout: "HTTP GET Request"
+part_of: core_webservice

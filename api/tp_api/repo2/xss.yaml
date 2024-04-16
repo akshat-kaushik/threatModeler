@@ -1,0 +1,19 @@
+name: Cross-Site Scripting (XSS)
+description: The integrated web server (Port 80/TCP and Port 443/TCP) of the affected device might be vulnerable to XSS attacks.
+cwe: 80
+mitigations:
+- description: Use a Content Security Policy (CSP) to prevent the execution of scripts from unauthorized sources.
+  phase: Architecture and Design
+- description: Security Awareness Training
+  phase: Human Factors
+
+risk:
+- consequence: Unauthorized access to sensitive data through XSS exploitation, leading to leakage of confidential information.
+  type: Confidentiality
+- consequence: Manipulation of user interface elements or settings, potentially resulting in unintended actions or unauthorized control.
+  type: Integrity
+
+test-cases:
+  -name: OWASP ZAP
+  test: Use OWASP ZAP to scan the web server for XSS vulnerabilities.
+  tools: [OWASP ZAP]

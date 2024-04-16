@@ -1,0 +1,40 @@
+objectType: Feature
+name: login
+description: As an Student of the organization,
+    I would like to login to the MIS to see Grade and manage student Information
+abuse_cases:
+  - name: external_attacker_account_takeover
+    description: As an external attacker, I would compromise a single/multiple user accounts to gain access to sensitive Student/TEacher information.
+    threat_scenarios:
+    - name: sql injection user account access
+      type: repo
+      description: Perform SQL Injection to compromise the Database, and hange user tagged to specific role.
+      reference: {name: sql_injection, severity: 3}
+
+    - name: compromise user password
+      type: repo
+      description: External attacker may be able to bypass user authentication by compromising weak passwords of users.
+      reference: {name: weak-default-password, severity: 2}
+
+    - name: auth token hijack xss
+      type: repo
+      description: Attacker attempts to steal Auth Token through XSS to elevate privileges to user's account and tag unauthorized Profile.
+      reference: {name: xss, severity: 3}
+
+    - name: authorization bypass change user
+      type: repo
+      reference: {name: idor_pk, severity: 3}
+      description: Perform Authorization Bypass through IDOR or Mass Assignment style vulnerabilities to get profile tagged to another user
+
+    - name: bruteforce_login/end user default password
+      type: repo
+      description: External attacker may be able to bypass user authentication by compromising default passwords of users
+      reference: {name: password-bruteforce, severity: 2}
+    
+  
+    
+
+internal_interactions:
+- upload_expense: "HTTP POST Request"
+- logout: "HTTP GET Request"
+part_of: core_webservice

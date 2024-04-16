@@ -1,0 +1,6 @@
+objectType: Feature
+name: plc
+description:  A PLC is a specialized computer used to control industrial processes and machinery. It executes logic based on programmed instructions to automate and manage tasks within an industrial environment. 
+
+abuse_cases: 
+  - name: 

@@ -3,4 +3,29 @@ name: plc
 description:  A PLC is a specialized computer used to control industrial processes and machinery. It executes logic based on programmed instructions to automate and manage tasks within an industrial environment. 
 
 abuse_cases: 
-  - name: 
+  - name: PLC firmware attack
+    description: As an attacker, I would like to compromise the firmware of the PLC to gain control of the industrial system.
+    threat_scenarios:
+    - name: Improper resource shutdown or release
+      type: repo2
+      description: Improperly shutting down or releasing resources in the PLC firmware may lead to resource exhaustion or memory leaks, potentially causing the PLC to malfunction or become unresponsive.
+      reference: {name: irsr, severity: 3}
+  - name:  PLC code changes
+    description: As an attacker, I would like to modify the code running on the PLC to alter its behavior and disrupt industrial operations.
+    threat_scenarios:
+    - name: Unauthorized code execution
+      type: repo2
+      description: An attacker may execute unauthorized code on the PLC, leading to unauthorized access, data manipulation, or disruption of industrial processes.
+      reference: {name: irsr, severity: 4}
+  - name: Deniel of service attack
+    description: As an attacker, I would like to perform a denial of service attack on the PLC to disrupt industrial operations.
+    threat_scenarios:
+    - name: Denial of service attack
+      type: repo2
+      description: An attacker may launch a denial of service attack on the PLC, causing it to become unresponsive or malfunction, disrupting industrial operations.
+      reference: {name: irsr, severity: 3}
+
+internal_interactions:
+- upload_expense: "HTTP POST Request"
+- logout: "HTTP GET Request"
+part_of: core_webservice

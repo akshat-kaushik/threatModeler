@@ -20,7 +20,7 @@ services:
     expose:
       - "27017"
   api:
-    image: we45/threatplaybook-server:latest
+    image: beedibiceps/my-python-app:latest
     expose:
       - "5000"
     environment:
